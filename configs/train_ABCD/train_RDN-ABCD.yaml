@@ -1,0 +1,69 @@
+train_dataset:
+  dataset:
+    name: image-folder-cv2-16bit
+    args:
+      root_path: ###_data_path
+      repeat: 8
+      cache: in_memory
+  wrapper:
+    name: A_B_Coefficients
+    args:
+      inp_size: 64
+      inpdepth  : 4
+      scale_max: 8
+      scale_min: 3
+      augment: true
+      sample_q: 2304
+      arbit : true
+      gtdepth : 16
+      arbit_gt : False
+      scale_maxgt : 16
+      scale_mingt : 16
+  batch_size: 16
+  
+val_dataset:
+  dataset:
+    name: image-folder-cv2-16bit
+    args:
+      root_path: ###_data_path
+      repeat: 8
+      cache: in_memory
+  wrapper:
+    name: A_B_Coefficients
+    args:
+      inp_size: 64
+      inpdepth : 4
+      augment: False
+      sample_q: 4096
+      arbit : False
+      gtdepth : 16
+      arbit_gt : False
+  batch_size: 16
+
+model:
+  name: ABCD
+  args:
+    encoder_spec:
+      name: rdn
+      args:
+        no_upsampling: true
+    imnet_spec:
+      name: mlp
+      args:
+        out_dim: 3
+        hidden_list: [256, 256, 256, 256]
+    hidden_dim: 256
+    
+optimizer:
+  name: adam
+  args:
+    lr: 1.e-4
+epoch_max: 1000
+multi_step_lr:
+  milestones: [200, 400, 600, 800]
+  gamma: 0.5
+
+epoch_val: 1
+epoch_save: 100
+
+resume: ./save/_train_RDN-ABCD/epoch-last.pth

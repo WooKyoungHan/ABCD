@@ -1,0 +1,11 @@
+test_dataset:
+  dataset:
+    name: image-folder-cv2-8bit
+    args:
+      root_path: 
+  wrapper:
+    name: ABCD_test
+    args:
+      inpdepth: 4
+      gtdepth: 8
+  batch_size: 1
