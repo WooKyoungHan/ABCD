@@ -43,8 +43,27 @@ If you want to modify some configuration (e.g. the range of input bit-depth) mod
 python train.py --config configs/train_ABCD/FancyConfiguration.yaml --gpu 0
 ```
 
+
+Model|Training time (# GPU)
+:-:|:-:
+EDSR-ABCD|65h (1 GPU)
+RDN-ABCD|82h (2 GPU)
+SwinIR-ABCD|130h (4 GPU)
+
+
 ## Test
+The basic test code is : 
 ```
-python test.py --config configs/test_ABCD/abcd_test-kodak.yaml --LBD 4 --HBD 8 --gpu 0
+python test.py --config configs/test_ABCD/FancyConfiguration.yaml --model save/PATHS/MODEL.pth --LBD 4 --HBD 8 --gpu 0
 ```
-If you want to test another labels, you may change 'LBD' and 'HBD'  to test your model (e.g. 3-bits to 12-bits --LBD 3 --HBD 12, respectively)
+
+If you want to test another labels, you may change 'LBD' and 'HBD' to test your model.
+(e.g. 3-bits to 12-bits ``--LBD 3 --HBD 12``, respectively)
+
+For SwinIR based ABCD, test code needs additional flags ``--window 8`` 
+
+
+
+## Acknowledgements
+
+This code is built on [LIIF](https://github.com/yinboc/liif),[LTE](https://github.com/jaewon-lee-b/lte) and [SwinIR](https://github.com/JingyunLiang/SwinIR). We thank the authors for sharing their codes.
