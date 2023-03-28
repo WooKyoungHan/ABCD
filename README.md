@@ -30,6 +30,7 @@ The basic train code is :
 python train.py --config configs/train_ABCD/SomeConfigs.yaml --gpu 0
 ```
 We provide configurations of our main paper
+
 **EDSR-ABCD** : `configs/train_ABCD/train_EDSR-ABCD.yaml`
 
 **RDN-ABCD** : `configs/train_ABCD/train_RDN-ABCD.yaml` 
@@ -50,6 +51,8 @@ EDSR-ABCD|65h (1 GPU)
 RDN-ABCD|82h (2 GPU)
 SwinIR-ABCD|130h (4 GPU)
 
+We recommend trying ``EDSR-baseline_ABCD`` since it is lighter than models above.
+
 
 ## Test
 The basic test code is : 
@@ -58,6 +61,7 @@ python test.py --config configs/test_ABCD/FancyConfiguration.yaml --model save/P
 ```
 
 If you want to test another labels, you may change 'LBD' and 'HBD' to test your model.
+
 (e.g. 3-bits to 12-bits ``--LBD 3 --HBD 12``, respectively)
 
 For SwinIR based ABCD, test code needs additional flags ``--window 8`` 
