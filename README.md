@@ -22,3 +22,29 @@ conda activate abcd
 Our train and valid sets follows the prior work [Punnappurath et. al.](https://github.com/abhijithpunnappurath/a-little-bit-more/tree/master/download_data_and_test), sampled from [MIT-Adove FiveK](https://data.csail.mit.edu/graphics/fivek/) and [Sintel](https://media.xiph.org/sintel/sintel-1k-png16/) dataset. 
 
 For the benchmark part in Tab 1, we tested [Kodak](https://r0k.us/graphics/kodak/), [TESTIMAGES1200](https://testimages.org/) (\B01C00 folder), and [ESPLv2](http://signal.ece.utexas.edu/~bevans/synthetic/) datasets.
+
+
+## Train
+The basic train code is : 
+```
+python train.py --config configs/train_ABCD/SomeConfigs.yaml --gpu 0
+```
+We provide configurations of our main paper
+**EDSR-ABCD** : `configs/train_ABCD/train_EDSR-ABCD.yaml`
+
+**RDN-ABCD** : `configs/train_ABCD/train_RDN-ABCD.yaml` 
+
+**SwinIR-ABCD** : `configs/train_ABCD/train_SwinIR-ABCD.yaml`
+
+**EDSR-baseline_ABCD** : `configs/train_ABCD/train_EDSR-baseline_ABCD.yaml`
+
+If you want to modify some configuration (e.g. the range of input bit-depth) modify `.yaml` files and run 
+```
+python train.py --config configs/train_ABCD/FancyConfiguration.yaml --gpu 0
+```
+
+## Test
+```
+python test.py --config configs/test_ABCD/abcd_test-kodak.yaml --LBD 4 --HBD 8 --gpu 0
+```
+If you want to test another labels, you may change 'LBD' and 'HBD'  to test your model (e.g. 3-bits to 12-bits --LBD 3 --HBD 12, respectively)
