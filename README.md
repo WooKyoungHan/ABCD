@@ -3,7 +3,10 @@ This repository contains the official implementation for ABCD introduced in the 
 
 ABCD : Arbitrary Bit-wise Coefficient for De-quantization (CVPR 2023)
 
-### DEMO 
+## DEMO 
+
+Visual Demonstration of our ABCD to Sintel movie
+
 https://user-images.githubusercontent.com/92767986/228137480-6177e124-f610-4002-8861-481165e0ac3b.mp4
 
 Our ABCD reconstruct randomly quantized images with single training!
@@ -66,7 +69,13 @@ If you want to test another labels, you may change 'LBD' and 'HBD' to test your 
 
 For SwinIR based ABCD, test code needs additional flags ``--window 8`` 
 
+## Pretrained Models
 
+[EDSR-ABCD](https://drive.google.com/file/d/1LAe1KUPe8MuOP_NRwBMfQ5W32o37Ln6W/view?usp=sharing)
+
+[RDN-ABCD](https://drive.google.com/file/d/1tj7HiSpDxuHdEFQYG_EwWncDisfT_k88/view?usp=sharing)
+
+[SwinIR-ABCD](https://drive.google.com/file/d/1zBGLttDMET7CQcj729sZyPKOVWpMyyMZ/view?usp=sharing)
 
 ## Acknowledgements
 
