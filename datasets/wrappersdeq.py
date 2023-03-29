@@ -12,7 +12,7 @@ from datasets import register
 
 from utils import to_pixel_samples
 from utils import make_coord
-from utils import quantization,quantization16,zeropadding
+from utils import quantization, quantization16, zeropadding
 
 
 
@@ -127,6 +127,44 @@ class A_B_Coefficients_test(Dataset):
         
         crop_hr = quantization16(img, t)
         crop_lr = quantization16(img, s)        
+        crop_lr = zeropadding(crop_lr,t,s)
+
+        hr_coord, hr_rgb = to_pixel_samples(crop_hr.contiguous())
+        lr_coord, lr_rgb = to_pixel_samples(crop_lr.contiguous())
+            
+        bit_query = (2**(t-s))/(2**t-1)
+        cell = torch.ones_like(hr_coord[:,0]).unsqueeze(-1)
+        cell = cell*bit_query
+        
+        coefficient = (hr_rgb-lr_rgb)/bit_query
+
+        return {
+            'inp': crop_lr,
+            'coord': hr_coord,
+            'cell': cell,
+            'gt': coefficient,
+            'valid_inp' : lr_rgb
+        }    
+    
+    
+@register('ABCD_test-8bit')
+class A_B_Coefficients_test(Dataset):
+    def __init__(self, dataset,inpdepth=4,gtdepth = 8):
+        self.dataset = dataset
+        self.gtdepth = gtdepth
+        self.inpdepth = inpdepth
+
+    def __len__(self):
+        return len(self.dataset)
+
+    def __getitem__(self, idx):
+        img = self.dataset[idx]
+        
+        t = self.gtdepth            
+        s = self.inpdepth
+        
+        crop_hr = quantization(img, t)
+        crop_lr = quantization(img, s)        
         crop_lr = zeropadding(crop_lr,t,s)
 
         hr_coord, hr_rgb = to_pixel_samples(crop_hr.contiguous())
