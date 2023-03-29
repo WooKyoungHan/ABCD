@@ -4,7 +4,7 @@ test_dataset:
     args:
       root_path: 
   wrapper:
-    name: ABCD_test
+    name: ABCD_test-8bit
     args:
       inpdepth: 4
       gtdepth: 8
