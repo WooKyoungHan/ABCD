@@ -5,7 +5,7 @@ ABCD : Arbitrary Bit-wise Coefficient for De-quantization (CVPR 2023)
 
 ## DEMO 
 
-Visual Demonstration of our ABCD to Sintel movie
+
 
 https://user-images.githubusercontent.com/92767986/228137480-6177e124-f610-4002-8861-481165e0ac3b.mp4
 
@@ -70,6 +70,8 @@ If you want to test another labels, you may change 'LBD' and 'HBD' to test your 
 For SwinIR based ABCD, test code needs additional flags ``--window 8`` 
 
 ## Pretrained Models
+
+We provide pre-trained models of our ABCD. Test our models with test codes above. 
 
 [EDSR-ABCD](https://drive.google.com/file/d/1LAe1KUPe8MuOP_NRwBMfQ5W32o37Ln6W/view?usp=sharing)
 
