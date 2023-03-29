@@ -47,37 +47,40 @@ If you want to modify some configuration (e.g. the range of input bit-depth) mod
 python train.py --config configs/train_ABCD/FancyConfiguration.yaml --gpu 0
 ```
 
+### Pretrained Models
+
+We provide pre-trained models of our ABCD. Test our models with test codes below.
+
+Check the training time and required the number of GPU for training.
 
 Model|Training time (# GPU)
 :-:|:-:
-EDSR-ABCD|65h (1 GPU)
-RDN-ABCD|82h (2 GPU)
-SwinIR-ABCD|130h (4 GPU)
+[EDSR-ABCD](https://drive.google.com/file/d/1LAe1KUPe8MuOP_NRwBMfQ5W32o37Ln6W/view?usp=sharing)|65h (1 GPU)
+[RDN-ABCD](https://drive.google.com/file/d/1tj7HiSpDxuHdEFQYG_EwWncDisfT_k88/view?usp=sharing)|82h (2 GPU)
+[SwinIR-ABCD](https://drive.google.com/file/d/1zBGLttDMET7CQcj729sZyPKOVWpMyyMZ/view?usp=sharing)|130h (4 GPU)
 
 We recommend trying ``EDSR-baseline_ABCD`` since it is lighter than models above.
 
 
 ## Test
-The basic test code is : 
+
+To test our model, run the code below : 
 ```
-python test.py --config configs/test_ABCD/FancyConfiguration.yaml --model save/PATHS/MODEL.pth --LBD 4 --HBD 8 --gpu 0
+python test.py --config configs/test_ABCD/abcd_test-16bits.yaml --model save/PATHS/MODEL.pth --LBD 4 --HBD 8 --gpu 0
 ```
 
-If you want to test another labels, you may change 'LBD' and 'HBD' to test your model.
+
+**16-bit image dataset** : `/configs/test_ABCD/abcd_test-16bits.yaml` (e.g. MIT-5K, TESTIMAGES1200) 
+
+**8-bit image dataset** : `/configs/test_ABCD/abcd_test-8bits.yaml` (e.g. Kodak) 
+
+If you want to test another labels, you may change flag 'LBD' and 'HBD' to test your model.
 
 (e.g. 3-bits to 12-bits ``--LBD 3 --HBD 12``, respectively)
 
-For SwinIR based ABCD, test code needs additional flags ``--window 8`` 
+For SwinIR based ABCD, test code needs additional flag ``--window 8`` 
 
-## Pretrained Models
-
-We provide pre-trained models of our ABCD. Test our models with test codes above. 
-
-[EDSR-ABCD](https://drive.google.com/file/d/1LAe1KUPe8MuOP_NRwBMfQ5W32o37Ln6W/view?usp=sharing)
-
-[RDN-ABCD](https://drive.google.com/file/d/1tj7HiSpDxuHdEFQYG_EwWncDisfT_k88/view?usp=sharing)
-
-[SwinIR-ABCD](https://drive.google.com/file/d/1zBGLttDMET7CQcj729sZyPKOVWpMyyMZ/view?usp=sharing)
+You can save results with using the flag ``--save 1``.
 
 ## Acknowledgements
 
