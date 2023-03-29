@@ -12,6 +12,9 @@ def register(name):
 
 
 def make(model_spec, args=None, load_sd=False):
+    if (model_spec['name']) == ('lte_quantization_rgb-0916-clip'):
+        model_spec['name'] = 'ABCD'
+
     if args is not None:
         model_args = copy.deepcopy(model_spec['args'])
         model_args.update(args)
