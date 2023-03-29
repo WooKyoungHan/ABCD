@@ -128,18 +128,3 @@ def make_rdn(G0=64, RDNkSize=3, RDNconfig='B',
 
     args.n_colors = 3
     return RDN(args)
-
-@register('rdn_mine')
-def make_rdn(G0=64, RDNkSize=3, RDNconfig='C',
-             scale=2, no_upsampling=False):
-    args = Namespace()
-    args.G0 = G0
-#     args.G0 = 32
-    args.RDNkSize = RDNkSize
-    args.RDNconfig = RDNconfig
-
-    args.scale = [scale]
-    args.no_upsampling = no_upsampling
-
-    args.n_colors = 3
-    return RDN(args)
