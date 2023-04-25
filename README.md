@@ -1,7 +1,7 @@
 # ABCD : Arbitrary Bitwise Coefficient for De-quantization
 This repository contains the official implementation for ABCD introduced in the following paper:
 
-ABCD : Arbitrary Bit-wise Coefficient for De-quantization (CVPR 2023)
+[ABCD : Arbitrary Bit-wise Coefficient for De-quantization (CVPR 2023)](https://ipl.dgist.ac.kr/ABCD_cvpr23.pdf)
 
 ## DEMO 
 
